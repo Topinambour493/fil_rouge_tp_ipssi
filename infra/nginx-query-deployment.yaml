@@ -34,4 +34,3 @@ spec:
     - protocol: TCP
       port: 4002
       targetPort: 4002
-      nodePort: 30015

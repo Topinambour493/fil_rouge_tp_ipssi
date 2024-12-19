@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-const CommentList = ({ comments }) => {
+const CommentList = ({ comments}) => {
+
+
   const renderedComments = comments.map((comment) => {
     let content;
 
