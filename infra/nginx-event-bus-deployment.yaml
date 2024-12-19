@@ -29,7 +29,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: nginx-event-bus
+    app: event-bus-srv
   ports:
     - protocol: TCP
       port: 4005
