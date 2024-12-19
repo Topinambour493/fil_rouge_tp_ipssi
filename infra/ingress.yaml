@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-
 spec:
   ingressClassName: nginx
   rules:
@@ -12,41 +11,41 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: nginx-client-service
+                name: client-srv
                 port:
-                  number: 80
+                  number: 3000
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: nginx-comments-service
+                name: comments-srv
                 port:
                   number: 4001
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: nginx-event-bus-service
+                name: event-bus-srv
                 port:
                   number: 4005
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: nginx-moderation-service
+                name: moderation-srv
                 port:
                   number: 4003
-          - path: /
+          - path: /posts
             pathType: Prefix
             backend:
               service:
-                name: nginx-posts-service
+                name: posts-clusterip-srv
                 port:
                   number: 4000
-          - path: /
+          - path: /posts/create
             pathType: Prefix
             backend:
               service:
-                name: nginx-query-service
+                name: query-srv
                 port:
                   number: 4002

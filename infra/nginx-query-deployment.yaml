@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-query-service
+  name: query-srv
 spec:
   type: NodePort
   selector:

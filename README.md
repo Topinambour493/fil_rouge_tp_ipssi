@@ -111,7 +111,7 @@ Si vous modifiez ces ports, assurez-vous également de mettre à jour les réfé
     docker run -d -p 4001:4001 comments
     docker run -d -p 4002:4002 query  
     docker run -d -p 4003:4003 moderation
-    docker run -d -pn 4005:4005 event-bus
+    docker run -d -p 4005:4005 event-bus
     ```
 
 3. Déployez les services sur Kubernetes :
