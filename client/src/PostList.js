@@ -3,18 +3,20 @@ import axios from "axios";
 import CommentCreate from "./CommentCreate";
 import CommentList from "./CommentList";
 
-const PostList = () => {
+const PostList = ({reloadPosts, handleReloadPosts}) => {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
     const res = await axios.get("http://localhost/posts");
-
     setPosts(res.data);
   };
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    if (reloadPosts === true) {
+      fetchPosts();
+      handleReloadPosts();
+    }
+  }, [reloadPosts]);
 
   const renderedPosts = Object.values(posts).map((post) => {
     return (
@@ -25,8 +27,10 @@ const PostList = () => {
       >
         <div className="card-body">
           <h3>{post.title}</h3>
-          <CommentList comments={post.comments} />
-          <CommentCreate postId={post.id} />
+          <CommentList comments={post.comments}
+
+          />
+          <CommentCreate postId={post.id} handleReloadPosts={handleReloadPosts}/>
         </div>
       </div>
     );

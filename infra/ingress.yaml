@@ -37,17 +37,3 @@ spec:
                 name: client-srv
                 port:
                   number: 3000
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: event-bus-srv
-                port:
-                  number: 4005
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: moderation-srv
-                port:
-                  number: 4003
