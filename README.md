@@ -96,12 +96,25 @@ Si vous modifiez ces ports, assurez-vous également de mettre à jour les réfé
 1. Construisez les images Docker pour chaque service :
     ```bash
     docker build -t client ./client
+    docker build -t comments ./comments
     docker build -t posts ./posts
-    # Répétez pour tous les services
+    docker build -t event-bus ./event-bus
+    docker build -t moderation ./moderation
+    docker build -t query ./query
     ```
     Le projet est basé sur l'image **node:alpine**
 
+2. Lancer les images pour chaque service
+    ```bash
+    docker run -d -p 80:80 client  
+    docker run -d -p 4000:4000 posts
+    docker run -d -p 4001:4001 comments
+    docker run -d -p 4002:4002 query  
+    docker run -d -p 4003:4003 moderation
+    docker run -d -pn 4005:4005 event-bus
+    ```
+
 2. Déployez les services sur Kubernetes :
     ```bash
-    kubectl apply -f k8s/
+    kubectl apply -f .\infra\ingress.yaml
     ```
