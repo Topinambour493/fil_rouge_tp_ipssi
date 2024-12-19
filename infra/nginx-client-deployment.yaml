@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: localhost:5000/client:latest
+          image: client
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
 
@@ -33,4 +34,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30003
+      nodePort: 30005

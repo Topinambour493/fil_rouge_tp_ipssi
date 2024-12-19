@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-posts-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-posts
+  template:
+    metadata:
+      name: nginx-posts-pod
+      labels:
+        app: nginx-posts
+    spec:
+      containers:
+        - name: nginx
+          image: posts
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-posts-service
+spec:
+  type: NodePort
+  selector:
+    app: nginx-posts
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000
+      nodePort: 30008
