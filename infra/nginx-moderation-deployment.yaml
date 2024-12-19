@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-moderation-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-moderation
+  template:
+    metadata:
+      name: nginx-moderation-pod
+      labels:
+        app: nginx-moderation
+    spec:
+      containers:
+        - name: nginx
+          image: moderation
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4003
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-moderation-service
+spec:
+  type: NodePort
+  selector:
+    app: nginx-moderation
+  ports:
+    - protocol: TCP
+      port: 4003
+      targetPort: 4003
+      nodePort: 30009
