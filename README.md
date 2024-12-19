@@ -104,17 +104,7 @@ Si vous modifiez ces ports, assurez-vous également de mettre à jour les réfé
     ```
     Le projet est basé sur l'image **node:alpine**
 
-2. Lancer les images pour chaque service
-    ```bash
-    docker run -d -p 80:80 client  
-    docker run -d -p 4000:4000 posts
-    docker run -d -p 4001:4001 comments
-    docker run -d -p 4002:4002 query  
-    docker run -d -p 4003:4003 moderation
-    docker run -d -p 4005:4005 event-bus
-    ```
-
-3. Déployez les services sur Kubernetes :
+2. Déployez les services sur Kubernetes :
     ```bash
     kubectl apply -f .\infra\nginx-posts-deployment.yaml  
     kubectl apply -f .\infra\nginx-query-deployment.yaml  
@@ -124,7 +114,7 @@ Si vous modifiez ces ports, assurez-vous également de mettre à jour les réfé
     kubectl apply -f .\infra\nginx-client-deployment.yaml
     ```
    
-4. Lancer le ingress sr Kubernetes : 
+3. Lancer le ingress sr Kubernetes : 
     ```bash
     kubectl apply -f .\infra\ingress.yaml
     ```
