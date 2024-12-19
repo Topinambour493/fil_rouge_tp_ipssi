@@ -114,7 +114,17 @@ Si vous modifiez ces ports, assurez-vous également de mettre à jour les réfé
     docker run -d -pn 4005:4005 event-bus
     ```
 
-2. Déployez les services sur Kubernetes :
+3. Déployez les services sur Kubernetes :
+    ```bash
+    kubectl apply -f .\infra\nginx-posts-deployment.yaml  
+    kubectl apply -f .\infra\nginx-query-deployment.yaml  
+    kubectl apply -f .\infra\nginx-comments-deployment.yaml  
+    kubectl apply -f .\infra\nginx-moderation-deployment.yaml  
+    kubectl apply -f .\infra\nginx-event-bus-deployment.yaml  
+    kubectl apply -f .\infra\nginx-client-deployment.yaml
+    ```
+   
+4. Lancer le ingress sr Kubernetes : 
     ```bash
     kubectl apply -f .\infra\ingress.yaml
     ```
